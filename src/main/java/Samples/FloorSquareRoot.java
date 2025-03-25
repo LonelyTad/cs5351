@@ -7,7 +7,11 @@ public class FloorSquareRoot {
         int start = 1, end = x, ans = 0;
         while (start <= end) {
             int mid = (start + end) / 2;
-            if (mid * mid == x) return mid;
+            // Intentional mistake: Changed the condition to mid * mid <= x
+            // This will cause the function to return the first mid where mid * mid is less than or equal to x,
+            // instead of finding the largest mid where mid * mid is less than or equal to x.
+            if (mid * mid <= x) return mid; 
+            // This condition will now always be true, leading to incorrect results.
             if (mid * mid < x) {
                 start = mid + 1;
                 ans = mid;
@@ -20,4 +24,3 @@ public class FloorSquareRoot {
         return ans;
     }
 }
-
